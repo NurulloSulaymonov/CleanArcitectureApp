@@ -13,9 +13,5 @@ public class DataContext : IdentityDbContext
     {
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=blog.db");
-        base.OnConfiguring(optionsBuilder);
-    }
+   
 }
