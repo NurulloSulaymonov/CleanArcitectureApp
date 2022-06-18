@@ -15,6 +15,12 @@ public class AccountController:Controller
         _signInManager = signInManager;
         _accountService = accountService;
     }
+    public async Task<IActionResult> GetUsers()
+    {
+        var listOfUsers = await _accountService.GetUsers();
+        return View(listOfUsers);
+    }
+
 
     [HttpGet]
     public IActionResult Login(string returnUrl)

@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services.Services.Account;
 
@@ -11,6 +12,12 @@ public class AccountService : IAccountService
     public AccountService(UserManager<IdentityUser> userManager)
     {
         _userManager = userManager;
+    }
+
+    public async Task<List<IdentityUser>> GetUsers()
+    {
+        var list = await _userManager.Users.ToListAsync();
+        return list;
     }
 
     public async Task<IdentityUser?> Login(LoginDto login)
