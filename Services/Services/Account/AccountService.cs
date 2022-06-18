@@ -13,7 +13,7 @@ public class AccountService : IAccountService
         _userManager = userManager;
     }
 
-    public async Task<IdentityUser> Login(LoginDto login)
+    public async Task<IdentityUser?> Login(LoginDto login)
     {
         
         var user =  await _userManager.FindByNameAsync(login.Username);
@@ -22,7 +22,7 @@ public class AccountService : IAccountService
         var validatePassword = new PasswordValidator<IdentityUser>();
         var result = await  validatePassword.ValidateAsync(_userManager, user, login.Password);
 
-      if (result.Succeeded == false) return null;
+      if (!result.Succeeded) return null;
       
         // fill claims
         var claims = new List<Claim>()

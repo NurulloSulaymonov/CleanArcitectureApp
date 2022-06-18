@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IAccountService, AccountService>();
-var app = builder.Build();
+
+
 builder.Services.AddDbContext<DataContext>(config=>config.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
 
@@ -23,13 +23,18 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(config =>
     .AddEntityFrameworkStores<DataContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddScoped<IAccountService, AccountService>();
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.AccessDeniedPath = "/Account/accessdenied/"; 
     options.LoginPath = "/Account/Login/";
+    options.Cookie.Name = "MyAppCookie";
     options.ExpireTimeSpan = TimeSpan.FromDays(1);
 });
 
+
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -47,7 +52,13 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 app.Run();

@@ -5,6 +5,6 @@ namespace Services.Services.Account;
 
 public interface IAccountService
 {
-    public Task<IdentityUser> Login(LoginDto login);
+    public Task<IdentityUser?> Login(LoginDto login);
     Task<bool> Register(RegisterDto model);
 }

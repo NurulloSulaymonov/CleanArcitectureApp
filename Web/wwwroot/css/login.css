@@ -1,28 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Numans');
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
 
-html,body{
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    font-family: 'Numans', sans-serif;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
-.container{
-    height: 100%;
-    align-content: center;
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
 }
-
-.card{
-    height: 370px;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0,0,0,0.5) !important;
-}
-
-.social_icon span{
-    font-size: 60px;
-    margin-left: 10px;
-    color: #FFC312;
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
 }
