@@ -11,6 +11,7 @@ public class Product
     public string? Description { get; set; }
     [MaxLength(50)]
     public string? Sku { get; set; }
+    public string? Image { get; set; }
     public int ProductCategoryId { get; set; }
     public ProductCategory? ProductCategory { get; set; }
     public int ProductInventoryId { get; set; }
