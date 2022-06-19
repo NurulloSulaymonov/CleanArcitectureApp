@@ -12,10 +12,7 @@ public class DataContext : IdentityDbContext
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Product> Products { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=blog.db");
-        base.OnConfiguring(optionsBuilder);
-    }
 }
