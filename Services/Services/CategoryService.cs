@@ -19,25 +19,7 @@ namespace Services.Services
             _mapper = mapper;
         }
 
-        public async Task<List<CategoryDto>> GetCategories()
-        {
-            var list = await (
-                from p in _context.Categories
-                select new CategoryDto()
-                {
-                    CategoryId = p.CategoryId,
-                    CategoryName = p.CategoryName
-                }
-            ).ToListAsync();
-            return list;
-        }
-
-        public async Task<int> InsertCategory(CategoryDto categoryDto)
-        {
-            var map = _mapper.Map<Category>(categoryDto);
-            await _context.Categories.AddAsync(map);
-            return await _context.SaveChangesAsync();
-        }
+        
 
     }
 }
