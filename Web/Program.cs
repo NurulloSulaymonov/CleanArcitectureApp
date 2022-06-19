@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
+using Services;
 using Services.Services.Account;
 using Web;
 
@@ -12,6 +13,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(config=>config.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
+builder.Services.AddAutoMapper(typeof(ProfileService));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(config =>
     {
